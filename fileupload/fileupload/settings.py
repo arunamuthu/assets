@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'file_app',
+    'rotate',
+    'resize',
+    'crop'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'assets',
-        'USER': 'root',
+        'USER': 'aruna',
         'PASSWORD': 'Aruna@228',
         'HOST': 'localhost',   
         'PORT': '3306',
