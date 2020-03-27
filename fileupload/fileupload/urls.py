@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^file/', include('file_app.urls')),
     url(r'^image/', include('rotate.urls')),
     url(r'^image/', include('resize.urls')),
+    url(r'^image/', include('resize.urls')),
 ]
 
 if settings.DEBUG:
