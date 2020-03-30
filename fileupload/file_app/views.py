@@ -9,7 +9,7 @@ from .serializers import AssetSerializer
 class AssetView(APIView):
     parser_classes = (MultiPartParser, FormParser)
     def post(self, request, *args, **kwargs):
-        Asset_serializer = AssetSerializer(data=request.data)
+        asset_serializer = AssetSerializer(data=request.data)
         if asset_serializer.is_valid():
             asset_serializer.save()
             return Response(asset_serializer.data, status=status.HTTP_201_CREATED)

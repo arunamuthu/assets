@@ -13,14 +13,14 @@ class MimeType(models.Model):
 
 class FileMimeType(models.Model):
     id = models.AutoField(primary_key=True)
-    file_type_id  = models.ForeignKey(FileType, related_name='FileType.id', on_delete=models.CASCADE)
-    mime_type_id  = models.ForeignKey(MimeType, related_name='MimeType.id', on_delete=models.CASCADE)
+    file_type_id  = models.ForeignKey(FileType,on_delete=models.CASCADE)
+    mime_type_id  = models.ForeignKey(MimeType,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Type(models.Model):
     id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=20)
-    file_type_id  = models.ForeignKey(FileMimeType, related_name='FileMimeType.id', on_delete=models.CASCADE)
+    file_type_id  = models.ForeignKey(FileMimeType,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class TypeArea(models.Model):
@@ -28,12 +28,12 @@ class TypeArea(models.Model):
     typearea = models.CharField(max_length=20)
     height = models.FloatField()
     width = models.FloatField()
-    type_id  = models.ForeignKey(Type, related_name='Type.id', on_delete=models.CASCADE)
+    type_id  = models.ForeignKey(Type,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Asset(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.FileField(blank=False, null=False, validators=[validate_file_extension])
-    type_id  = models.ForeignKey(Type, related_name='Type.id', on_delete=models.CASCADE)
-    mime_type_id = models.ForeignKey(MimeType, related_name='MimeType.id', on_delete=models.CASCADE)
+    type_id  = models.ForeignKey(Type,on_delete=models.CASCADE)
+    mime_type_id = models.ForeignKey(MimeType,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
