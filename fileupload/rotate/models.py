@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.files import File
+from PIL import Image as Img
+from io import BytesIO
 
 class Image(models.Model):
     title = models.CharField(max_length=120)
@@ -16,5 +19,4 @@ class Image(models.Model):
             output.seek(0)
             self.image = File(output, self.image.name)
 
-        return super(Work, self).save(*args, **kwargs)
-
+        return super(Image, self).save(*args, **kwargs)
