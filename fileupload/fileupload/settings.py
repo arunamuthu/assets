@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'file_app',
     'rotate',
     'resize',
-    'crop'
+    'crop',
+    'reduce_quality'
 ]
 
 MIDDLEWARE = [
