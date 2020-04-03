@@ -17,14 +17,13 @@ class Image(models.Model):
         if self.image:
             image = Img.open(BytesIO(self.image.read()))
             (width, height) = image.size
-            changed_width = round((self.right /100) * height)
-            changed_height = round((self.bottom /100) * height)
-            image = image.crop((width, height, width+changed_width, height+changed_height))
+            changed_width = width + round((self.right /100) * width)
+            changed_height = height + round((self.bottom /100) * height)
+            size = (changed_width,changed_height)
+            image = image.crop((width, height, changed_width, changed_height))
             output = BytesIO()
             image.save(output, format='JPEG', quality=75)
             output.seek(0)
-            print(image)
-            print(self.image)
             self.image = File(output, self.image.name)
 
         return  super(Image, self).save(*args, **kwargs)
